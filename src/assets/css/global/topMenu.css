@@ -1,0 +1,93 @@
+.tab-container{
+    top: 60px !important;
+    z-index: 100 !important;
+   
+}
+
+.stack-tab-container {
+    position: relative;
+}
+
+.stack-tab-container .tab-bar {
+    background: #fff;
+    overflow: hidden;
+    padding-right: 25px;
+}
+
+.stack-tab-container .left-arrow,
+.stack-tab-container .right-arrow {
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    top: -5px;
+    display: none;
+    align-items: center;
+    padding: 0 10px;
+    pointer-events: none;
+}
+
+.stack-tab-container .right-arrow {
+    right: 0;
+    justify-content: flex-end;
+    background: linear-gradient(to left, #fff 20%, transparent);
+}
+
+.stack-tab-container .left-arrow {
+    background: linear-gradient(to right, #fff 20%, transparent);
+}
+
+.stack-tab-container .right-arrow.active,
+.stack-tab-container .left-arrow.active {
+    display: flex;
+}
+
+.stack-tab-container i {
+    width: 24px;
+    height: 24px;
+    padding: 8px;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.stack-tab-container ul.tabs {
+    display: flex;
+    gap: 16px;
+    margin: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    list-style: none;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+}
+
+.stack-tab-container ul.dragging {
+    scroll-behavior: auto;
+    cursor: pointer;
+}
+
+.stack-tab-container ul::-webkit-scrollbar {
+    display: none;
+}
+
+.stack-tab-container a.tab {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.6);
+    padding: 0 12px;
+    border-radius: 16px;
+    background-color: #e4e4e4;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    user-select: none;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.stack-tab-container a.tab.active {
+    border: 1px solid #007bff;
+    color: #007bff;
+    background: #fff;
+}

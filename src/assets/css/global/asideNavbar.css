@@ -1,0 +1,51 @@
+.fixed-left{
+    position: -webkit-sticky;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 100;
+    display: inline;
+    width: 250px;
+    background-color: bisque;
+}
+
+.sidebar-nav{
+    list-style-type: none;
+    padding: 0;
+    margin-top: 100px;
+}
+
+.sidebar-nav li a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    width: 90%;
+    margin: auto;
+    display: block;
+    padding: 10px;
+}
+.sidebar-nav li a:hover{
+    background-color:aliceblue;
+    border-radius: 15px;
+}
+.sidebar-nav li .active{
+    background-color:aliceblue;
+    border-radius: 15px;
+}
+.sidebar-nav li a *:last-child{
+    margin-left: 20px;
+}
+
+.tfb-link{
+    list-style-type: none;
+    overflow: hidden;
+}
+.tfb-link li{
+    float: left;
+}
+.tfb-link a{
+    text-decoration: none;
+    color: black;
+    margin-left: 30px;
+}
