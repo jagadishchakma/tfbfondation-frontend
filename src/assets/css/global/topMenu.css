@@ -9,7 +9,6 @@
 }
 
 .stack-tab-container .tab-bar {
-    background: #fff;
     overflow: hidden;
     padding-right: 25px;
 }
@@ -29,11 +28,11 @@
 .stack-tab-container .right-arrow {
     right: 0;
     justify-content: flex-end;
-    background: linear-gradient(to left, #fff 20%, transparent);
+    background: linear-gradient(to left, #F0F2F5 20%, transparent);
 }
 
 .stack-tab-container .left-arrow {
-    background: linear-gradient(to right, #fff 20%, transparent);
+    background: linear-gradient(to right, #F0F2F5 20%, transparent);
 }
 
 .stack-tab-container .right-arrow.active,
@@ -75,7 +74,6 @@
     display: inline-block;
     font-size: 13px;
     font-weight: 500;
-    color: rgba(0, 0, 0, 0.6);
     padding: 0 12px;
     border-radius: 16px;
     background-color: #e4e4e4;

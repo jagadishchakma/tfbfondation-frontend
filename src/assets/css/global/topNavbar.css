@@ -1,7 +1,12 @@
-.top-nav-bar{
-    background-color: bisque;
+body{
+    line-height: 0;
 }
-.top-nav-bar .trisharan{
+.top-nav-bar {
+    z-index: 1000;
+    padding: 5px 0px 7px 0px;
+}
+
+.top-nav-bar .trisharan {
     list-style-type: none;
     margin: 0px;
 }

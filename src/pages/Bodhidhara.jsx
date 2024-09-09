@@ -1,6 +1,6 @@
-import Image from "../components/bodhidhara/Image.jsx";
+import Image from "../components/tfb/Image.jsx";
 import TopMenu from "../components/globals/TopMenu";
-import bodhidhara_menu from '../utilities/bodhidhara_link.js';
+import bodhidhara_menu from '../data/bodhidara/bodhidhara_link.js';
 
 const Bodhidhara = () => {
    

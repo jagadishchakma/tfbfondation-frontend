@@ -1,23 +1,21 @@
-// App.js
-import { Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import About from './pages/About';
-import Layout from './components/globals/Layout';
-import Bodhidhara from './pages/Bodhidhara';
-import TfbFoundation from './pages/TfbFoundation';
+import { createBrowserRouter } from "react-router-dom";
+import Layout from "./components/globals/Layout"
+import Home from "./pages/Home";
+import tfb_routes from "./routes/tfb_routes.jsx";
+import bodhidhara_routes from "./routes/bodhidhara_routes";
 
-
-function App() {
-  return (
-    <Layout>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/bodhidhara" element={<Bodhidhara />} />
-        <Route path="/tfb" element={<TfbFoundation />} />
-      </Routes>
-    </Layout>
-  );
-}
-
-export default App;
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout/>,
+    children: [
+      {
+        path: "",
+        element: <Home />,
+      },
+      ...bodhidhara_routes,
+      ...tfb_routes
+    ]
+  }
+]);
+export default router;

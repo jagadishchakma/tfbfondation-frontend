@@ -1,8 +1,13 @@
 const topNavMenu = [
     {
+        id: 0,
+        name: 'Home',
+        path: '/tfb'
+    },
+    {
         id: 1,
         name: 'TFB Vissions',
-        path: '/vissions'
+        path: "/tfb/visions"
     },
     {
         id: 2,
@@ -41,6 +46,16 @@ const topNavMenu = [
     },
     {
         id: 9,
+        name: 'TFB Buddhism',
+        path: '/events'
+    },
+    {
+        id: 39,
+        name: 'TFB Buddhism',
+        path: '/events'
+    },
+    {
+        id: 93,
         name: 'TFB Buddhism',
         path: '/events'
     }

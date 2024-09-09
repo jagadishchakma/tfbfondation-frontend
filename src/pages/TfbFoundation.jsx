@@ -1,14 +1,18 @@
 import React from 'react';
-import TopMenu from '../components/globals/TopMenu';
-import tfb_menu from '../utilities/tfb_link.js';
+import { useLocation } from 'react-router-dom';
+import Home from '../components/tfb/Home';
+import Visions from '../components/tfb/Visions';
 
 const TfbFoundation = () => {
-    return (
-        <>
-            <TopMenu navlink={tfb_menu}/>
-            <h1>TFB Foundation</h1>
-        </>
-    );
+    const { pathname } = useLocation();
+    switch (pathname) {
+        case '/tfb':
+            return <Home />
+        case '/tfb/visions':
+            return <Visions />
+        default:
+            return <div>404</div>;
+    }
 };
 
 export default TfbFoundation;
