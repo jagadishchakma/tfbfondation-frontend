@@ -1,0 +1,25 @@
+.newsInputBox{
+    margin: 7px;
+    margin-top: 100px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 20px;
+}
+.newsInputBox .newsInputAuthProfile img{
+    border-radius: 20px;
+}
+.newsInputAuthBox{
+    height: 50px;
+    background-color: #F0F2F5;
+    width: 100%;
+    border-radius: 20px;
+}
+.newsInputAuthBox:hover{
+    cursor: pointer;
+    background-color: #e2e3e4;
+}
+.newsInputAuthBox p{
+    margin: 0;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}

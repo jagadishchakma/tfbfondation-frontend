@@ -1,13 +1,9 @@
-import { useContext } from "react";
-import TopMenu from "../components/globals/TopMenu";
-import bodhidhara_menu from '../data/bodhidara/bodhidhara_link.js';
-import { BodhidharaContext } from "../contexts/BodhidharaContext.jsx";
+import NewsInputBox from "../components/bodhidhara/NewsInputBox";
 
 const Bodhidhara = () => {
-   const {uname} = useContext(BodhidharaContext);
     return (
         <>
-           <h1>{uname}</h1>
+          <NewsInputBox/>
         </>
     );
 };
