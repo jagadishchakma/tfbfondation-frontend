@@ -7,50 +7,95 @@
 .sidebar-nav {
     width: 230px;
     height: 100%;
-    overflow: scroll;
     position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
+
+.sidebar-menu {
+    width: 220px;
+    height: 100%;
+    position: relative;
+    padding: 10px;
+}
+
 
 .sidebar-nav ul {
     list-style-type: none;
     padding: 0;
 }
 
-.sidebar-nav ul li a {
+.sidebar-nav ul.sidebar-nav-menu li a {
     text-decoration: none;
-    color: black;
-    font-weight: bold;
-    width: 90%;
-    margin: auto;
-    display: block;
+    color: #252526 !important;
+    display: flex;
     padding: 10px;
+    gap: 15px;
+    font-weight: 600;
 }
 
-.sidebar-nav li a:hover {
-    background-color: aliceblue;
+.sidebar-nav ul.sidebar-nav-menu li a:hover {
+    background-color: white;
     border-radius: 15px;
 }
 
-.sidebar-nav li .active {
-    background-color: aliceblue;
+.sidebar-nav ul.sidebar-nav-menu li .active {
+    background-color: white;
     border-radius: 15px;
-}
-
-.sidebar-nav li a *:last-child {
-    margin-left: 20px;
 }
 
 .tfb-link {
-    list-style-type: none;
-    overflow: hidden;
-}
+    display: flex;
+    flex-wrap: wrap;
 
-.tfb-link li {
-    float: left;
 }
 
 .tfb-link a {
     text-decoration: none;
     color: black;
-    margin-left: 30px;
+    padding: 0px 10px;
+    font-weight: 600;
+
+}
+
+.tfb-copyright {
+    padding: 0 10px;
+    font-weight: 600;
+}
+
+
+
+/* Scrollbar styles */
+.sidebar-nav::-webkit-scrollbar {
+    width: 5px; /* Width of the scrollbar */
+   
+    display: none;
+}
+.sidebar-nav:hover::-webkit-scrollbar {
+   
+    display: block;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+    background: #374dc3; /* Color of the scrollbar thumb */
+    border-radius: 6px; /* Roundness of the scrollbar thumb */
+}
+
+.sidebar-nav::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color of the scrollbar track */
+    border-radius: 6px; /* Roundness of the scrollbar track */
+}
+/* Scrollbar styles */
+::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+    background: gray; /* Color of the scrollbar thumb */
+     /* Roundness of the scrollbar thumb */
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color of the scrollbar track */
+    border-radius: 6px; /* Roundness of the scrollbar track */
 }

@@ -1,9 +1,8 @@
-body{
-    line-height: 0;
-}
+
 .top-nav-bar {
     z-index: 1000;
     padding: 5px 0px 7px 0px;
+    line-height: 0;
 }
 
 .top-nav-bar .trisharan {

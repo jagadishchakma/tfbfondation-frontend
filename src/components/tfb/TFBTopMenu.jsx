@@ -4,7 +4,7 @@ import { useState, useRef, useEffect, useContext } from 'react';
 import { GlobalContext } from '../../contexts/GlobalContext';
 import { BodhidharaContext } from '../../contexts/BodhidharaContext';
 
-const TopMenu = ({ navlink }) => {
+const TFBTopMenu = ({ navlink }) => {
     const [activeTab, setActiveTab] = useState('');
     const tabListRef = useRef(null);
     const leftArrowRef = useRef(null);
@@ -116,4 +116,4 @@ const TopMenu = ({ navlink }) => {
     );
 };
 
-export default TopMenu;
+export default TFBTopMenu;

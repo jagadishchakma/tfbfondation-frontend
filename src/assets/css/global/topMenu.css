@@ -6,11 +6,12 @@
 
 .stack-tab-container {
     position: relative;
+    padding-left: 10px;
+    padding-right: 5px;
 }
 
 .stack-tab-container .tab-bar {
     overflow: hidden;
-    padding-right: 25px;
 }
 
 .stack-tab-container .left-arrow,
@@ -59,6 +60,7 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
     scroll-behavior: smooth;
+    padding-left: inherit
 }
 
 .stack-tab-container ul.dragging {
@@ -70,7 +72,7 @@
     display: none;
 }
 
-.stack-tab-container a.tab {
+.stack-tab-container a.tab, .stack-tab-container button.tab{
     display: inline-block;
     font-size: 13px;
     font-weight: 500;
@@ -84,7 +86,7 @@
     text-decoration: none;
 }
 
-.stack-tab-container a.tab.active {
+.stack-tab-container a.tab.active, .stack-tab-container button.tab.active {
     border: 1px solid #007bff;
     color: #007bff;
     background: #fff;

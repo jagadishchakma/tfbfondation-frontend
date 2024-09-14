@@ -1,25 +1,23 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-const LoadingImage = ({imageUrl}) => {
+const LoadingImage = ({src, width, height, alt}) => {
     const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   return (
     <div>
-      {/* Show logo until the blog image is loaded */}
       {!isImageLoaded && (
-        <div style={{width:'600px', height:'599px', backgroundColor:'red'}}>
+        <div style={{width, height, backgroundColor:'red', margin: '0 auto'}}>
 
         </div>
       )}
 
-      {/* Blog post image */}
       <img 
-        src={imageUrl} 
-        alt="Blog Post" 
-        style={{ display: isImageLoaded ? 'block' : 'none' }} 
+        src={src} 
+        alt={alt}
+        style={{ display: isImageLoaded ? 'block' : 'none', margin: '0 auto' }} 
         onLoad={() => setIsImageLoaded(true)} 
-        width={600}
-        height={599}
+        width={width}
+        height={height}
       />
     </div>
   );

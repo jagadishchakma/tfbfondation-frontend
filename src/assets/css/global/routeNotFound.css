@@ -1,0 +1,10 @@
+.route-not-found{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.route-not-found p{
+    margin: 0;
+    padding: 0;
+}

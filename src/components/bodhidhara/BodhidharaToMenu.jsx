@@ -1,18 +1,15 @@
-import { Link, useLocation } from 'react-router-dom';
+import {useLocation } from 'react-router-dom';
 import '../../assets/css/global/topMenu.css';
-import { useState, useRef, useEffect, useContext } from 'react';
+import { useRef, useEffect, useContext } from 'react';
 import { GlobalContext } from '../../contexts/GlobalContext';
 import { BodhidharaContext } from '../../contexts/BodhidharaContext';
 
-const TopMenu = ({ navlink }) => {
-    const [activeTab, setActiveTab] = useState('');
+const BodhidharaToMenu = ({ navlink }) => {
+
     const tabListRef = useRef(null);
     const leftArrowRef = useRef(null);
     const rightArrowRef = useRef(null);
 
-    const handleTabClick = (path) => {
-        setActiveTab(path);
-    };
 
     const handleScroll = () => {
         const tabList = tabListRef.current;
@@ -75,6 +72,7 @@ const TopMenu = ({ navlink }) => {
     }, []);
 
     const {theme} = useContext(GlobalContext);
+    const {activeTab, setActiveTab} = useContext(BodhidharaContext);
     return (
         <nav style={{backgroundColor: theme.compoBgColor}}>
             <div className="tab-container sticky-top">
@@ -91,14 +89,13 @@ const TopMenu = ({ navlink }) => {
 
                             {navlink.map((data) => (
                                 <li key={data.id}>
-                                    <Link
-                                        className={`tab ${activeTab === data.path ? 'active' : ''}`}
-                                        to={data.path}
-                                        onClick={() => handleTabClick(data.path)}
+                                    <button
+                                        className={`tab ${activeTab && activeTab === data.param ? 'active' : ''}`}
+                                        onClick={() => setActiveTab(data.param)}
                                         style={{color: theme.txtColor}}
                                     >
                                         {data.name}
-                                    </Link>
+                                    </button>
                                 </li>
                             ))}
                         </ul>
@@ -116,4 +113,4 @@ const TopMenu = ({ navlink }) => {
     );
 };
 
-export default TopMenu;
+export default BodhidharaToMenu;

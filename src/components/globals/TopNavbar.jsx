@@ -9,6 +9,7 @@ import "../../assets/css/global/topNavbar.css";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { GlobalContext } from '../../contexts/GlobalContext';
+import Image from "./Image";
 
 const TopNavbar = () => {
     const {theme, setOpen} = useContext(GlobalContext)
@@ -17,16 +18,16 @@ const TopNavbar = () => {
             <nav className="nav-container">
                 <div className="container-fluid">
                     <div className="d-flex flex-row justify-content-between align-items-center">
-                        <a href="" className="brand-logo"><img src={tfb_logo} alt="TFB" width={60} height={60} /></a>
+                        <a href="" className="brand-logo"><Image src={tfb_logo} alt="TFB" width={50} height={50} /></a>
                         <ul className="d-flex flx-row justify-content-between align-items-center trisharan gap-5" id="trisharan">
-                            <li><img src={buddha} alt="TFB" width={30} height={30} /></li>
-                            <li><img src={dharma} alt="TFB" width={30} height={30} /></li>
-                            <li><img src={sangha} alt="TFB" width={30} height={30} /></li>
+                            <li><Image src={buddha} alt="TFB" width={30} height={30} /></li>
+                            <li><Image src={dharma} alt="TFB" width={30} height={30} /></li>
+                            <li><Image src={sangha} alt="TFB" width={30} height={30} /></li>
                         </ul>
                         <ul className="d-flex flx-row justify-content-between align-items-center trisharan gap-3">
-                            <li><Link href="/"><img src={plus_user} alt="TFB" width={30} height={30} /></Link></li>
-                            <li><Link href="/"><img src={notification} alt="TFB" width={30} height={30} /></Link></li>
-                            <li><Link href="/" onClick={()=> setOpen(true)}><img src={menu} alt="TFB" width={30} height={30} /></Link></li>
+                            <li><Link href="/"><Image src={plus_user} alt="TFB" width={30} height={30} /></Link></li>
+                            <li><Link href="/"><Image src={notification} alt="TFB" width={30} height={30} /></Link></li>
+                            <li><button onClick={()=> setOpen(true)} style={{border: 'none', backgroundColor:theme.topBgColor}}><Image src={menu} alt="TFB" width={30} height={30} /></button></li>
                         </ul>
 
                     </div>

@@ -1,28 +1,34 @@
 const topNavMenu = [
     {
+        id: 0,
+        name: 'Home',
+        param: 'home'
+
+    },
+    {
         id: 1,
         name: 'Kotina Cibor Daan',
-        path: '/vissions'
+        param: 'vissions'
     },
     {
         id: 2,
         name: 'Probarona',
-        path: '/projects'
+        param: 'projects'
     },
     {
         id: 3,
         name: 'Aggriculture',
-        path: '/where'
+        param: 'where'
     },
     {
         id: 4,
         name: 'Indeginous Lifestyle',
-        path: '/about'
+        param: 'contact'
     },
     {
         id: 5,
         name: 'Social Development',
-        path: '/about'
+        param: 'about'
     }
 ]
 export default topNavMenu;

@@ -1,13 +1,13 @@
-import Image from "../components/tfb/Image.jsx";
+import { useContext } from "react";
 import TopMenu from "../components/globals/TopMenu";
 import bodhidhara_menu from '../data/bodhidara/bodhidhara_link.js';
+import { BodhidharaContext } from "../contexts/BodhidharaContext.jsx";
 
 const Bodhidhara = () => {
-   
+   const {uname} = useContext(BodhidharaContext);
     return (
         <>
-            <TopMenu navlink={bodhidhara_menu}/>
-            <Image/>
+           <h1>{uname}</h1>
         </>
     );
 };

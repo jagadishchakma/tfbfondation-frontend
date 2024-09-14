@@ -1,40 +1,46 @@
-
 /* top navbar responsive */
 @media only screen and (max-width: 400px) {
-    .trisharan img{
+    .trisharan img {
         width: 20px;
         height: 20px;
     }
-    .brand-logo img{
+
+    .brand-logo img {
         width: 30px;
         height: 30px;
     }
 }
+
 /* bottom navbar responsive */
 @media only screen and (max-width: 400px) {
-    .bottom-navbar img{
+    .bottom-navbar img {
         width: 20px;
         height: 20px;
     }
-    .bottom-navbar{
+
+    .bottom-navbar {
         height: 50px !important;
     }
-    .bottom-navbar .btm-nav{
-        font-size: 8px !important;
+
+    .bottom-navbar .btm-nav h6 {
+        font-size: 8px !important
     }
-    .bottom-navbar .btm-nav-home{
+
+    .bottom-navbar .btm-nav-home {
         width: 36px !important;
         height: 36px !important;
         top: -15px !important;
     }
 }
 
+@media only screen and (max-width: 991px) {
+    .bottom-navbar {
+        display: block !important;
+    }
+}
+
 /* middle body section responsive */
 @media only screen and (max-width: 991px) {
-    #left-aside-close {
-        display: none;
-    }
-
     #right-aside {
         display: none;
     }
@@ -43,29 +49,40 @@
         width: 100%;
         margin: 0;
     }
-    #trisharan{
+
+    #trisharan {
         gap: 1rem !important
     }
 }
 
 /* drawer section responsive */
 @media only screen and (max-width: 991px) {
-   #left-aside-open{
-    display: block;
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    z-index: 1100;
-    background-color: #00000070;
-   }
-   .aside-bar{
-    width: 100hw;
-    height: 100vh;
-   }
-   .sidebar-nav{
-    z-index: 1200;
-   }
+    
+    #left-aside-open {
+        display: block;
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        z-index: 1100;
+        background-color: #00000070;
+    }
+
+    #left-aside-close {
+        display: none;
+        width: 0%;
+    }
+
+
+
+    .aside-bar {
+        width: 100hw;
+        height: 100vh;
+    }
+
+    .sidebar-nav {
+        z-index: 1200;
+    }
 }

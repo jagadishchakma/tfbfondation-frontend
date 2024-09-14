@@ -49,16 +49,6 @@ const topNavMenu = [
         name: 'TFB Buddhism',
         path: '/events'
     },
-    {
-        id: 39,
-        name: 'TFB Buddhism',
-        path: '/events'
-    },
-    {
-        id: 93,
-        name: 'TFB Buddhism',
-        path: '/events'
-    }
 ]
 
 export default topNavMenu
