@@ -1,7 +1,13 @@
 .newsBox{
     padding: 10px;
     background-color: white;
-    margin: 7px;
+    margin: 27px 7px;
+    border-radius: 5px;
+}
+.newsBox .newsAuthInfo h1{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: .5rem;
 }
 .newsBoxheader i{
     font-size: 20px;

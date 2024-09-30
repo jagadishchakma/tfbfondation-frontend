@@ -6,6 +6,8 @@ const Bodhidhara = () => {
         <>
           <NewsInputBox/>
           <NewsBox/>
+          <NewsBox/>
+          <NewsBox/>
         </>
     );
 };

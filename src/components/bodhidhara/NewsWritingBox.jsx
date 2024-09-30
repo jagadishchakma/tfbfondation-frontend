@@ -10,7 +10,7 @@ const NewsWritingBox = () => {
             <div className="newsWritingBox">
                 <div className="d-flex justify-content-center align-items-center h-100">
                     <div className="newsEditorBox shadow">
-                        <i className="fa-solid fa-xmark" id="closeNewsWritingBox" onClick={()=>setNewsWriting(false)}></i>
+                        <i className="fa-solid fa-xmark closeNewsWritingBox" onClick={()=>setNewsWriting(false)}></i>
                         <Editors />
                     </div>
                 </div>

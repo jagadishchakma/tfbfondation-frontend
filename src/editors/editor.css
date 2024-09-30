@@ -1,10 +1,57 @@
-.editorBox{
-    height: 100%;
-    overflow: hidden;
+.editorBox .newsTitle{
+    width: 100%;
+    padding: 3px 5px;
 }
-#editor {
-    border: 1px solid #EAEBEE;
-    padding: 10px;
-    height: 90%;
-    overflow-y: auto;
+.editorBox .newsMessage{
+    width: 100%;
+    margin-top: 5px;
+    padding: 3px 5px;
+    height: 200px;
+}
+.editorBox .video-add{
+    position: relative;
+    margin-top: 10px;
+}
+
+.editorBox .media-add .video-media{
+    text-align: center;
+    cursor: pointer;
+
+}
+.editorBox .media-add .image-media{
+    text-align: center;
+    cursor: pointer;
+}
+.editorBox .media-add .video-add .closeNewsWritingBox{
+    top: -10px;
+    right: -10px;
+}
+.editorBox .media-add .video-add input{
+    font-size: 12px;
+}
+.editorBox .media-add .video-add textarea{
+    font-size: 12px;
+    height: 100px;
+}
+
+.editorBox .video-media, .editorBox .image-media{
+    background-color: #F0F2F5;
+    margin: auto;
+    padding: 7px;
+    border-radius: 5px;
+}
+.editorBox .video-media i{
+    color: orange
+}
+.editorBox .image-media i{
+    color: green;
+}
+.editorBox .video-add-list .video-preview{
+    position: relative;
+    background-color: #F2F3F4;
+    margin-top: 15px;
+}
+.editorBox .video-add-list .video-preview .closeNewsWritingBox{
+    top: -10px;
+    right: -10px;
 }
