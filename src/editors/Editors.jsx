@@ -1,12 +1,16 @@
+import { Button } from '@mui/material';
 import './editor.css';
 import { useState } from 'react';
 import ReactPlayer from "react-player";
 
 const Editor = () => {
+  // start form data
   const [title, setTitle] = useState('');
   const [message, setMessage] = useState('');
+  const [category, setCategory] = useState('');
   const [images, setImages] = useState([]);
   const [videos, setVideos] = useState([]);
+  // end form data
 
   // start video details
   const [video_details, setVideoDetails] = useState([]);
@@ -22,6 +26,7 @@ const Editor = () => {
     const formData = new FormData();
     formData.append('title', title);
     formData.append('message', message);
+    formData.append('category',category);
     formData.append('video_details', JSON.stringify(video_details));
     images.forEach((image) => {
       formData.append(`image`, image);
@@ -65,6 +70,18 @@ const Editor = () => {
   };
   // end remove video from add list
 
+  // start add image
+  const addImage = (e) => {
+    setImages((prevImages) => [...prevImages, e.target.files[0]])
+  }
+  // end add 
+
+  // start remove image from add list
+  const removeImage = (index) => {
+    setImages((prevImages) => prevImages.filter((image, i) => i !== index))
+  }
+  // end remove image from add list
+
 
   console.log(videos);
   return (
@@ -76,6 +93,14 @@ const Editor = () => {
         </div>
         <div>
           <textarea value={message} onChange={(event) => setMessage(event.target.value)} className="newsMessage" placeholder='news body' />
+        </div>
+        <div>
+          <select className="newsCategory" onChange={(e)=>setCategory(e.target.value)}>
+            <option defaultValue>select category</option>
+            <option value="news1">General</option>
+            <option value="news2">Katina Cibor Daan</option>
+            <option value="news3">Social</option>
+          </select>
         </div>
 
         <div className="row media-add">
@@ -89,7 +114,7 @@ const Editor = () => {
                 <div className="mb-2"><textarea className="w-100" onChange={(e) => setVideoDescription(e.target.value)} value={video_description} placeholder="Video description"></textarea></div>
                 <div className="mb-2 overflow-hidden"><input type="file" onChange={(e) => setVideo(e.target.files[0])} /></div>
                 <div className="mb-2">
-                  <span className={`btn btn-primary w-100 ${(video_title && video_description && video)?'':'disabled'}`} onClick={addVideo}>Add</span>
+                  <span className={`btn btn-primary w-100 ${(video_title && video_description && video) ? '' : 'disabled'}`} onClick={addVideo}>Add</span>
                 </div>
               </div>
             )}
@@ -110,10 +135,29 @@ const Editor = () => {
             </div>
           </div>
           <div className="col-6">
-            <p className="image-media"><i className="fa-regular fa-images"></i> Photo</p>
+            <p className="image-media">
+              <label htmlFor="imageInput">
+                <i className="fa-regular fa-images"></i> Photo
+              </label>
+              <input type="file" id="imageInput" hidden onChange={addImage} />
+            </p>
+            <div className="image-add-list">
+              {
+                images.map((image, index) => (
+                  <div className="image-preview" key={index}>
+                    <i className="fa-solid fa-xmark closeNewsWritingBox" onClick={() => removeImage(index)}></i>
+                    <img src={URL.createObjectURL(image)} alt="image" width="100%" hieght="300" />
+
+                  </div>
+                ))
+              }
+            </div>
           </div>
         </div>
-        <button type="submit" className="btn btn-success w-100 mt-5">Submit</button>
+        <Button type="submit" className="w-100 mt-5" variant="contained" color="success" disabled={(title && message && category)?false:true}>
+          Submit
+        </Button>
+       
       </form>
     </div>
   );

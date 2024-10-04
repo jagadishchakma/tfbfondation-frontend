@@ -8,6 +8,14 @@
     padding: 3px 5px;
     height: 200px;
 }
+.editorBox .newsCategory{
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 7px;
+    padding: 3px 5px;
+    color: gray
+}
+
 .editorBox .video-add{
     position: relative;
     margin-top: 10px;
@@ -20,8 +28,11 @@
 }
 .editorBox .media-add .image-media{
     text-align: center;
+}
+.editorBox .media-add .image-media label{
     cursor: pointer;
 }
+
 .editorBox .media-add .video-add .closeNewsWritingBox{
     top: -10px;
     right: -10px;
@@ -52,6 +63,16 @@
     margin-top: 15px;
 }
 .editorBox .video-add-list .video-preview .closeNewsWritingBox{
+    top: -10px;
+    right: -10px;
+}
+
+.editorBox .image-add-list .image-preview{
+    position: relative;
+    background-color: #F2F3F4;
+    margin-top: 15px;
+}
+.editorBox .image-add-list .image-preview .closeNewsWritingBox{
     top: -10px;
     right: -10px;
 }
