@@ -1,0 +1,27 @@
+.verification-code input{
+    font-size: 30px;
+    text-align: center;
+}
+.resend-code{
+    color: rgb(102, 179, 255);
+    font-size: 12px;
+    cursor:  pointer
+}
+.verification-close-btn{
+    font-size: 25px;
+    cursor: pointer
+}
+.verification-code-form{
+    position: relative;
+}
+.verification-code-form-submit{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: radial-gradient(circle, rgba(217,231,228,0.8738352030265231) 0%, rgba(237,237,237,0.7057679761357668) 30%, rgba(255,255,255,0.6637511694130778) 75%, rgba(181,181,205,0.8710340825783438) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

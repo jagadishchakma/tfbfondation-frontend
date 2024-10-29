@@ -18,6 +18,7 @@
 .newsBox .newsMediaOptions{
     position: relative;
     cursor: pointer;
+    opacity: 0.6;
 }
 .newsBox .newsMediaOptions i{
     position: absolute;
@@ -25,4 +26,7 @@
     right: 3px;
     color: #F0F2F5;
     z-index: 10;
+}
+.newsBox .mediaActive{
+    opacity: 2;
 }

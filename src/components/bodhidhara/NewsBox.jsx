@@ -45,12 +45,12 @@ const NewsBox = ({ news }) => {
                         <p>সোশাল মিডিয়ায় আমরা উস্কানিমূলক বক্তব্য পরিহার করি। সংশোধন হই, সহনশীল হই।ব্যক্তিকে আক্রমণ নয় সমস্যাকে আক্রমণ করি। সমাধানের পথ খুঁজি , সংঘাত বন্ধ করি। পৃথিবীতে আমরা কেউ চিরস্থায়ী নয়। নিজে ভালো থাকি, অন্যকেও ভালো রাখি।কারন দিন শেষে আমরা সবাই মানুষ, একই দেশের নাগরিক।।
                         </p>
                     </div>
-                    <div className="newsMediaDisplay" style={{height:activeMedia && activeMedia.type=='video'?'300px':'400px'}}>
+                    <div className="newsMediaDisplay" style={{ height: activeMedia && activeMedia.type == 'video' ? '300px' : '400px' }}>
                         {
-                            activeMedia && activeMedia.type=="video" && <NewsVideo videoId={activeMedia.id} height={300} width="100%"/>
+                            activeMedia && activeMedia.type == "video" && <NewsVideo videoId={activeMedia.id} height={300} width="100%" />
                         }
                         {
-                            activeMedia && activeMedia.type=="photo" && <NewsPhoto imageId={activeMedia.id} height={400} width="100%"/>
+                            activeMedia && activeMedia.type == "photo" && <NewsPhoto imageId={activeMedia.id} height={400} width="100%" />
                         }
                     </div>
                     <div className="newsMediaList mt-2">
@@ -58,7 +58,7 @@ const NewsBox = ({ news }) => {
 
                             {
                                 news.fb_video_ids.map((item, index) => (
-                                    <div className="newsMediaOptions" key={index} onClick={()=>setActiveMedia({type:'video',id:item})}>
+                                    <div className={`newsMediaOptions ${activeMedia && activeMedia.id == item ? 'mediaActive' : ''}`} key={index} onClick={() => setActiveMedia({ type: 'video', id: item })}>
                                         <i className="fa-solid fa-video"></i>
                                         <VideoFrame videoId={item} height="50px" width="50px" />
                                     </div>
@@ -66,7 +66,7 @@ const NewsBox = ({ news }) => {
                             }
                             {
                                 news.fb_photo_ids.map((item, index) => (
-                                    <div className="newsMediaOptions" key={index} onClick={()=>setActiveMedia({type:'photo',id:item})}>
+                                    <div className={`newsMediaOptions ${activeMedia && activeMedia.id == item ? 'mediaActive' : ''}`} key={index} onClick={() => setActiveMedia({ type: 'photo', id: item })}>
                                         <i className="fa-solid fa-camera"></i>
                                         <NewsPhoto imageId={item} height="50px" width="50px" />
                                     </div>
@@ -77,8 +77,20 @@ const NewsBox = ({ news }) => {
                         </div>
                     </div>
                 </div>
-                <div className="newsBoxFooter">
 
+                <div className="newsBoxFooter mt-5">
+                    <hr />
+                    <div className="d-flex justify-content-start gap-4 align-items-center">
+                        <div className="bookmark">
+                            <i class="fa-regular fa-bookmark"></i>
+                        </div>
+                        <div className="react">
+                            <i class="fa-regular fa-heart"></i>
+                        </div>
+                        <div className="comment">
+                            <i class="fa-regular fa-comment"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </>
