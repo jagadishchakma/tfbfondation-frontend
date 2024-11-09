@@ -2,42 +2,85 @@ import tfb_logo from "../../assets/images/tfb_logo.png";
 import buddha from "../../assets/images/buddha.png";
 import dharma from "../../assets/images/dharma.png";
 import sangha from "../../assets/images/sangha.png";
-import notification from "../../assets/images/notification.png";
 import plus_user from "../../assets/images/plus_user.png";
 import menu from "../../assets/images/menu.png";
 import "../../assets/css/global/topNavbar.css";
 import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from '../../contexts/GlobalContext';
 import Image from "./Image";
 import SignUpLogin from "../account/SignUpLogin";
+import TopProfile from "./TopProfile";
+import ImageBorder from "./ImageBorder";
 
 const TopNavbar = () => {
-    const [modelOpen, setModelOpen] = useState(false);
-    const { theme, setOpen } = useContext(GlobalContext);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [data, setData] = useState(null);
+
+    useEffect(() => {
+        //   // Function to update the window Width
+        //   const handleResize = () => {
+        //     setWindowWidth(window.innerWidth);
+        //   };
+
+        //   // Add event listener on component mount
+        //   window.addEventListener('resize', handleResize);
+
+        // Set data based on window Width
+        if (windowWidth < 400) {
+            setData(20);
+        } else {
+            setData(30);
+        }
+
+        //   // Cleanup event listener on component unmount
+        //   return () => {
+        //     window.removeEventListener('resize', handleResize);
+        //   };
+    }, [windowWidth]);
+
+    const { theme, setOpen, user, setState } = useContext(GlobalContext);
+
+
+
+    /*-----------conditionally ui rendering user status login,profile or signin START------------*/
+    const getUserStatus = () => {
+        //get notify user is have or not via length
+        const userObjLength = Object.entries(user).length
+        console.log('user object length: ', userObjLength)
+        if (userObjLength > 0) {
+            return <TopProfile />
+        } else {
+            return (
+                <div onClick={() => setState((prevState)=>({...prevState, signupModal: true}))}><Image src={plus_user} alt="user" width={30} height={30} /></div>
+            )
+        }
+    }
+    /*-----------conditionally ui rendering user status login,profile or signin END------------*/
+
     return (
         <>
             <div className="top-nav-bar sticky-top shadow-sm" style={{ backgroundColor: theme.topBgColor }}>
                 <nav className="nav-container">
                     <div className="container-fluid">
                         <div className="d-flex flex-row justify-content-between align-items-center">
-                            <a href="" className="brand-logo"><Image src={tfb_logo} alt="TFB" width={50} height={50} /></a>
+                            <div className="d-flex align-items-center navbar-brand">
+                                <div><button onClick={() => setOpen(true)} style={{ border: 'none', backgroundColor: theme.topBgColor }}><Image src={menu} alt="TFB" width={data} height={data} /></button></div>
+                                <a href="" className="brand-logo"><Image src={tfb_logo} alt="TFB" width={data} height={data} /></a>
+                            </div>
                             <ul className="d-flex flx-row justify-content-between align-items-center trisharan gap-5" id="trisharan">
-                                <li><Image src={buddha} alt="TFB" width={30} height={30} /></li>
-                                <li><Image src={dharma} alt="TFB" width={30} height={30} /></li>
-                                <li><Image src={sangha} alt="TFB" width={30} height={30} /></li>
+                                <li><ImageBorder width={data} height={data}><Image src={buddha} alt="TFB" width={data} height={data} /></ImageBorder></li>
+                                <li><ImageBorder width={data} height={data}><Image src={dharma} alt="TFB" width={data} height={data} /></ImageBorder></li>
+                                <li><ImageBorder width={data} height={data}><Image src={sangha} alt="TFB" width={data} height={data} /></ImageBorder></li>
                             </ul>
-                            <ul className="d-flex flx-row justify-content-between align-items-center trisharan gap-3 top-right-nav">
-                                <li onClick={()=>setModelOpen(true)}><Image src={plus_user} alt="TFB" width={30} height={30} /></li>
-                                <li><Link href="/"><Image src={notification} alt="TFB" width={30} height={30} /></Link></li>
-                                <li><button onClick={() => setOpen(true)} style={{ border: 'none', backgroundColor: theme.topBgColor }}><Image src={menu} alt="TFB" width={30} height={30} /></button></li>
-                            </ul>
-
+                            <div className="d-flex flx-row justify-content-between align-items-center trisharan gap-3 top-right-nav">
+                                {getUserStatus()}
+                            </div>
                         </div>
                     </div>
                 </nav>
             </div>
-            <SignUpLogin open={modelOpen} close={setModelOpen}/>
+            <SignUpLogin/>
         </>
     );
 };

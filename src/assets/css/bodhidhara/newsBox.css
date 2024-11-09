@@ -30,3 +30,9 @@
 .newsBox .mediaActive{
     opacity: 2;
 }
+
+@media only screen and (max-width: 600px) {
+    .newsBoxFooter span{
+        display: none;
+    }
+  }

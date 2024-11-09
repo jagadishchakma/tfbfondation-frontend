@@ -11,7 +11,6 @@ const Bodhidhara = () => {
         const response = await fetch('http://127.0.0.1:8000/bodhidhara/news/');
         const data = await response.json();
         setNews(data);
-        console.log(data)
       } catch (error) {
         console.log(error)
       }
@@ -19,6 +18,7 @@ const Bodhidhara = () => {
     getNews();
   }, [])
 
+  console.log(news);
   return (
     <>
       <NewsInputBox />

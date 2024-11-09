@@ -9,10 +9,17 @@
     margin: 0px;
 }
 
-.top-right-nav img{
+.top-right-nav img {
     cursor: pointer;
 }
-.signup-login{
-    color:#1F73D4;
+
+.signup-login {
+    color: #1F73D4;
     cursor: pointer;
+}
+
+@media only screen and (min-width: 600px) {
+    .navbar-brand {
+        padding-left: 5px;
+    }
 }

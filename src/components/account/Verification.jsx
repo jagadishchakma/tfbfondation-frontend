@@ -2,11 +2,11 @@ import { Alert, Box, CircularProgress, TextField } from '@mui/material';
 import { useState, useEffect, useContext } from 'react';
 import { Modal } from 'react-bootstrap';
 import '../../assets/css/account/verification.css';
-import {api} from '../../utilities/api';
-import {backend_link} from '../../utilities/link';
+import { api } from '../../utilities/api';
+import { backend_link } from '../../utilities/link';
 import { GlobalContext } from '../../contexts/GlobalContext';
 
-const Verification = ({ userCredential, close }) => {
+const Verification = ({ userCredential }) => {
     const [timeLeft, setTimeLeft] = useState(5);
     const [isResendAllowed, setIsResendAllowed] = useState(false);
     const [verificationCode, setVerificationCode] = useState([]);
@@ -15,7 +15,7 @@ const Verification = ({ userCredential, close }) => {
         error: '',
         success: '',
     })
-    const {login} = useContext(GlobalContext)
+    const { login, setState:close } = useContext(GlobalContext)
 
     /* ---------- Resend code timeing  start -----------*/
     useEffect(() => {
@@ -51,17 +51,17 @@ const Verification = ({ userCredential, close }) => {
     };
 
     const handleResend = async () => {
-        let verifyData = {email: 'jagadishchakma401@gmail.com'}
-        setState((prevState)=>{
-            let newState = {...prevState}
+        let verifyData = { email: 'jagadishchakma401@gmail.com' }
+        setState((prevState) => {
+            let newState = { ...prevState }
             newState['error'] = ''
             newState['success'] = ''
             return newState
         })
         try {
-            let response = await api.put(backend_link+'/account/resend/', verifyData)
-            setState((prevState)=>{
-                let newState = {...prevState}
+            let response = await api.put(backend_link + '/account/resend/', verifyData)
+            setState((prevState) => {
+                let newState = { ...prevState }
                 newState.error = ''
                 newState.success = response.data.success
                 return newState
@@ -69,8 +69,8 @@ const Verification = ({ userCredential, close }) => {
             setTimeLeft(5); // Reset timer to 10 minutes
             setIsResendAllowed(false);
         } catch (error) {
-            setState((prevState)=>{
-                let newState = {...prevState}
+            setState((prevState) => {
+                let newState = { ...prevState }
                 newState.error = error.response.data.error
                 newState.success = ''
                 return newState;
@@ -170,19 +170,19 @@ const Verification = ({ userCredential, close }) => {
 
     /*---------- VERIFICATION CODE VALIDATION CHECK START ------------- */
     const codeValidationCheck = async (five_verify_code) => {
-        let verifyData = {verification_code:five_verify_code, email: 'jagadishchakma401@gmail.com'}
-        setState((prevState)=>{
-            let newState = {...prevState}
+        let verifyData = { verification_code: five_verify_code, email: 'jagadishchakma401@gmail.com' }
+        setState((prevState) => {
+            let newState = { ...prevState }
             newState['error'] = ''
             newState['success'] = ''
             return newState
         })
 
         try {
-            let response = await api.put(backend_link+"/account/verify/", verifyData)
-            if(response.status === 201){
-                setState((prevState)=>{
-                    let newState = {...prevState}
+            let response = await api.put(backend_link + "/account/verify/", verifyData)
+            if (response.status === 201) {
+                setState((prevState) => {
+                    let newState = { ...prevState }
                     newState['loading'] = false
                     newState['error'] = ''
                     newState['success'] = response.data.success
@@ -194,13 +194,13 @@ const Verification = ({ userCredential, close }) => {
             console.log(response)
         } catch (error) {
             console.log(error)
-            setState((prevState)=>{
-                let newState = {...prevState}
+            setState((prevState) => {
+                let newState = { ...prevState }
                 newState['loading'] = false
                 newState['error'] = error.response.data.error
                 return newState
             })
-            
+
         }
     }
     /*---------- VERIFICATION CODE VALIDATION CHECK END ------------- */
@@ -215,11 +215,11 @@ const Verification = ({ userCredential, close }) => {
                     </div>
                     <div>
                         {state.success && <Alert severity="success">{state.success}</Alert>}
-                        {state.error &&  <Alert severity="error">{state.error}</Alert>}
+                        {state.error && <Alert severity="error">{state.error}</Alert>}
                     </div>
                 </Modal.Title>
                 <div className="verification-close-btn">
-                    <i className="fas fa-times" onClick={() => close(false)}></i>
+                    <i className="fas fa-times" onClick={() => close((prevState)=>({...prevState, signupModal:false}))}></i>
                 </div>
             </Modal.Header>
             <Modal.Body>

@@ -1,13 +1,14 @@
 import { AccountCircle, AssignmentInd, Business, Email, Home, LocationCity, Lock, Person, Phone, Visibility, VisibilityOff } from '@mui/icons-material';
 import { Box, Button, CircularProgress, FormControl, FormHelperText, InputLabel, MenuItem, Select, TextField } from '@mui/material';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import '../../assets/css/account/signup.css';
 import { rangamatiSubDistricts, bandarbanSubDistricts, khagrachariSubDistricts } from '../../utilities/address';
 import { api } from '../../utilities/api';
+import { GlobalContext } from '../../contexts/GlobalContext';
 
 
-function SignUp({ setSignUpLogin,close,setUserCredential }) {
+function SignUp({ setSignUpLogin, setUserCredential }) {
     const [user, setUser] = useState({});
     const [error, setError] = useState({});
     const [showPassword, setShowPassword] = useState(false);
@@ -319,7 +320,7 @@ function SignUp({ setSignUpLogin,close,setUserCredential }) {
                 setUserCredential(user)
                 setSignUpLogin("verification")
             } catch (error) {
-                
+
                 let errorObj = error.response.data
                 let key = Object.keys(errorObj)
                 let value = errorObj[key][0]
@@ -340,11 +341,16 @@ function SignUp({ setSignUpLogin,close,setUserCredential }) {
     }
     /*----------- HANDLE FORM SUBMISSION END -----------*/
 
+    // context data load
+    const { setState: close } = useContext(GlobalContext)
 
     return (
         <>
-            <Modal.Header closeButton onClick={()=>close(false)}>
+            <Modal.Header className='d-flex justify-content-between align-items-start'>
                 <Modal.Title>Create Account</Modal.Title>
+                <div className="verification-close-btn">
+                    <i className="fas fa-times" onClick={() => close((prevState)=>({...prevState, signupModal:false}))}></i>
+                </div>
             </Modal.Header>
             <Modal.Body>
 
@@ -576,7 +582,7 @@ function SignUp({ setSignUpLogin,close,setUserCredential }) {
 
             </Modal.Body>
             <Modal.Footer>
-                <Button style={state.error?{border:'1px solid red'}:{border:'none'}} variant="contained" color="success" onClick={handlFormSubmission} disabled={state.loading ? true : false} fullWidth>
+                <Button style={state.error ? { border: '1px solid red' } : { border: 'none' }} variant="contained" color="success" onClick={handlFormSubmission} disabled={state.loading ? true : false} fullWidth>
                     {state.loading ? <CircularProgress color="secondary" size={25} /> : "Submit"}
                 </Button>
                 <span className='d-block w-100 text-center'> Already  have an account? <span className='signup-login' onClick={() => setSignUpLogin('login')}>Login</span></span>

@@ -5,8 +5,17 @@ import NewsVideo from "./NewsVideo.jsx";
 import time from "../../utilities/time.js"
 import { useEffect, useState } from 'react';
 import VideoFrame from './VideoFrame.jsx';
+import Reaction from './Reaction.jsx';
+import Comment from './Comment.jsx';
+import BookMark from './BookMark.jsx';
+import View from './View.jsx';
+import Cookies from 'js-cookie';
+import { authApi, api } from '../../utilities/api.js';
+
 const NewsBox = ({ news }) => {
     const [activeMedia, setActiveMedia] = useState(null)
+    const [state, setState] = useState({})
+
     useEffect(() => {
         if (news.fb_video_ids.length > 0) {
             setActiveMedia({ type: 'video', id: news.fb_video_ids[0] })
@@ -16,7 +25,28 @@ const NewsBox = ({ news }) => {
             setActiveMedia(null)
         }
     }, []);
-    console.log(activeMedia)
+
+    /* ---------- NEWS VIEW COUNT START ---------- */
+    const handleNewsViewCount = async (id) => {
+        let token = Cookies.get('authToken')
+        let userId = Cookies.get('userId')
+        let newsViewCount = `newsViewCount${id}` // this is dynamic news views identity name
+
+        let response = null // view response comming form the server
+        let req_credential = {news_id: id}
+
+        if (token && userId && !state[`newsViewCount${id}`]) { //if user authenticate and not have like this property on the state, then goes to count.
+            response = await authApi().put('/bodhidhara/news/views/count/', req_credential)
+            setState((prevState) => ({ ...prevState, [newsViewCount]: 1 }))
+        } else if (!state[`newsViewCount${id}`]) { //if user not authenticate and not have like this property on the state, then goes to count.
+            response = await api.put('/bodhidhara/news/views/count/', req_credential)
+            setState((prevState) => ({ ...prevState, [newsViewCount]: 1 }))
+        } else { // if like this property already have then not goes to count.
+            setState((prevState) => ({ ...prevState, [newsViewCount]: 1 }))
+        }
+    }
+    /* ---------- NEWS VIEW COUNT END ---------- */
+
     return (
         <>
             <div className="newsBox">
@@ -45,7 +75,7 @@ const NewsBox = ({ news }) => {
                         <p>সোশাল মিডিয়ায় আমরা উস্কানিমূলক বক্তব্য পরিহার করি। সংশোধন হই, সহনশীল হই।ব্যক্তিকে আক্রমণ নয় সমস্যাকে আক্রমণ করি। সমাধানের পথ খুঁজি , সংঘাত বন্ধ করি। পৃথিবীতে আমরা কেউ চিরস্থায়ী নয়। নিজে ভালো থাকি, অন্যকেও ভালো রাখি।কারন দিন শেষে আমরা সবাই মানুষ, একই দেশের নাগরিক।।
                         </p>
                     </div>
-                    <div className="newsMediaDisplay" style={{ height: activeMedia && activeMedia.type == 'video' ? '300px' : '400px' }}>
+                    <div className="newsMediaDisplay" style={{ height: activeMedia && activeMedia.type == 'video' ? '300px' : '400px' }} onClick={() => handleNewsViewCount(news.id)}>
                         {
                             activeMedia && activeMedia.type == "video" && <NewsVideo videoId={activeMedia.id} height={300} width="100%" />
                         }
@@ -53,7 +83,7 @@ const NewsBox = ({ news }) => {
                             activeMedia && activeMedia.type == "photo" && <NewsPhoto imageId={activeMedia.id} height={400} width="100%" />
                         }
                     </div>
-                    <div className="newsMediaList mt-2">
+                    <div className="newsMediaList mt-2" onClick={() => handleNewsViewCount(news.id)}>
                         <div className="d-flex justify-content-start gap-2">
 
                             {
@@ -80,17 +110,23 @@ const NewsBox = ({ news }) => {
 
                 <div className="newsBoxFooter mt-5">
                     <hr />
-                    <div className="d-flex justify-content-start gap-4 align-items-center">
+                    <div className="d-flex justify-content-between align-items-center">
+                        <Reaction />
+                        <Comment />
+                        <BookMark />
+                        <View news={news}/>
+                    </div>
+                    {/* <div >
                         <div className="bookmark">
-                            <i class="fa-regular fa-bookmark"></i>
+                            <i className="fa-regular fa-bookmark"></i>
                         </div>
                         <div className="react">
-                            <i class="fa-regular fa-heart"></i>
+                            <i className="fa-regular fa-heart"></i>
                         </div>
                         <div className="comment">
-                            <i class="fa-regular fa-comment"></i>
+                            <i className="fa-regular fa-comment"></i>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </>

@@ -1,13 +1,9 @@
-/*
-   Author: Jagadish Chakma
-   Date: 10/19/24
-   Description: this file use for axios api reuse across with porject
-*/
+
 
 /* ---------- NECESSARY MODULE IMPORT START ---------- */
 import axios from "axios";
-import {backend_link} from './link';
-import getCookie from "./getCookie";
+import { backend_link } from './link';
+import Cookies from "js-cookie";
 /* ---------- NECESSARY MODULE IMPORT END ---------- */
 
 
@@ -27,13 +23,17 @@ const api = axios.create({
 
 
 /* ---------- AUTH API THAT REQUIRED AUTH CREDENTIAL START ---------- */
-const authApi = axios.create({
-    baseURL: backend_link,
-    headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Token ${getCookie('authToken')}`
-    }
-})
+const authApi = () => {
+    let token = Cookies.get('authToken');
+    console.log("token", token);
+    return axios.create({
+        baseURL: backend_link,
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Token ${token}`
+        }
+    })
+}
 /* ---------- AUTH API THAT REQUIRED AUTH CREDENTIAL END ---------- */
 
 
@@ -45,11 +45,11 @@ const uploadApi = axios.create({
     baseURL: backend_link,
     headers: {
         'Content-Type': 'multipart/form-data',
-        'Authorization': `Token ${getCookie('authToken')}`
+        'Authorization': `Token ${Cookies.get('authToken')}`
     }
 })
 /* ---------- UPLOAD AUTH API END ---------- */
 
 
 
-export {api,authApi,uploadApi}
+export { api, authApi, uploadApi }

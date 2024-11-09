@@ -1,12 +1,14 @@
 import { AccountCircle, Lock, Visibility, VisibilityOff } from '@mui/icons-material';
 import { Box, Button, TextField } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Modal } from 'react-bootstrap';
+import { GlobalContext } from '../../contexts/GlobalContext';
 
-const Login = ({ setSignUpLogin,close }) => {
+const Login = ({ setSignUpLogin }) => {
     const [user, setUser] = useState({});
     const [error, setError] = useState({});
     const [showPassword, setShowPassword] = useState(false);
+    const {setState:close, login} = useContext(GlobalContext);
 
     //form data catch
     const handleFormData = (event) => {
@@ -14,9 +16,9 @@ const Login = ({ setSignUpLogin,close }) => {
         const value = event.target.value;
         setUser((prevUser) => ({ ...prevUser, [name]: value }));
 
-        if (name == 'user_name') {
+        if (name == 'username') {
             if (value.length > 0) {
-                setError((prevError) => ({ ...prevError, user_name: '' }));
+                setError((prevError) => ({ ...prevError, username: '' }));
             }
         }
         if (name == 'password') {
@@ -28,9 +30,9 @@ const Login = ({ setSignUpLogin,close }) => {
     
     //form data validation
     const handleFormValidation = () => {
-        if (!user.user_name) {
+        if (!user.username) {
             setError((prevError) => {
-                return { ...prevError, user_name: 'Please enter your username.' }
+                return { ...prevError, username: 'Please enter your username.' }
             })
             return
         }
@@ -45,24 +47,30 @@ const Login = ({ setSignUpLogin,close }) => {
     //form data submision
     const handleLogin = () => {
         handleFormValidation();
+        login(user);
     }
+
+    
     return (
         <>
-            <Modal.Header closeButton onClick={()=>close(false)}>
+            <Modal.Header className='d-flex justify-content-between align-items-start'>
                 <Modal.Title>Login</Modal.Title>
+                <div className="verification-close-btn">
+                    <i className="fas fa-times" onClick={() => close((prevState)=>({...prevState, signupModal:false}))}></i>
+                </div>
             </Modal.Header>
             <Modal.Body>
                 <Box sx={{ display: 'flex', alignItems: 'flex-end' }} className="signup-form-box">
                     <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                     <TextField
-                        error={error.user_name ? true : false}
-                        id={error.user_name ? "user-name-error" : "user-name"}
-                        label={error.user_name ? "Error" : "User Name or Email"}
-                        helperText={error.user_name ? error.user_name : ''}
+                        error={error.username ? true : false}
+                        id={error.username ? "user-name-error" : "user-name"}
+                        label={error.username ? "Error" : "User Name or Email"}
+                        helperText={error.username ? error.username : ''}
                         variant="standard"
                         type='text'
                         onChange={handleFormData}
-                        name='user_name'
+                        name='username'
                         fullWidth
                     />
                 </Box>

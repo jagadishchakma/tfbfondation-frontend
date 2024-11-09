@@ -1,0 +1,50 @@
+.top-profile{
+    position: relative;
+}
+.top-profile img{
+    border-radius: 50%;
+}
+
+.top-profile-toggler{
+    position: absolute;
+    right: -8px;
+    bottom: 2px;
+    background-color: #f0f2f5;
+    padding: 5px;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+.top-profile-toggler i{
+    font-size: 7px;
+}
+
+.top-profile #hide{
+    display: none;
+}
+.top-profile #show{
+    display: block;
+}
+
+.top-profile-menu{
+    position: absolute;
+    right: 0px;
+    min-width: 300px;
+    min-height: 300px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.top-profile-menu .logout{
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+}
+.top-profile .logout:hover{
+    background-color: #f0f2f5;
+}

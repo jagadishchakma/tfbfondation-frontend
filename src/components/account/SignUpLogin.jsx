@@ -1,27 +1,30 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Modal } from 'react-bootstrap';
 import SignUp from './SignUp';
 import Login from './Login';
 import Verification from './Verification';
+import { GlobalContext } from '../../contexts/GlobalContext';
 
-const SignUpLogin = ({ open, close }) => {
-    const [signUpLogin, setSignUpLogin] = useState('verification');
+const SignUpLogin = () => {
+    const [signUpLogin, setSignUpLogin] = useState('login');
     const [userCredential, setUserCredential] = useState({});
 
     const modalBody = () => {
         if (signUpLogin === 'login') {
-            return <Login setSignUpLogin={setSignUpLogin} close={close}/>
+            return <Login setSignUpLogin={setSignUpLogin} />
         }
         if (signUpLogin === 'signup'){
-            return <SignUp setSignUpLogin={setSignUpLogin} close={close} setUserCredential={setUserCredential}/>
+            return <SignUp setSignUpLogin={setSignUpLogin}  setUserCredential={setUserCredential}/>
         }
         if (signUpLogin === 'verification'){
-            return <Verification userCredential={userCredential} close={close}/>
+            return <Verification userCredential={userCredential} />
         }
     }
+    //context data
+    const {state} = useContext(GlobalContext)
     return (
         <Modal
-            show={open}
+            show={state.signupModal}
             onHide={() => {}}
             animation={false}
             size="md"

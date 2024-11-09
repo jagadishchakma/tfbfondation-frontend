@@ -1,4 +1,4 @@
-import tfb_logo from "../../assets/images/tfb_logo2.png";
+import tfb_logo from "../../assets/images/tfb_logo.png";
 import home from "../../assets/images/home.png";
 import member from "../../assets/images/member.png";
 import news from "../../assets/images/news.png";

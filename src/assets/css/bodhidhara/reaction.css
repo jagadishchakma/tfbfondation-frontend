@@ -1,0 +1,27 @@
+.bodhi-react{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+/*  maitri reaction css */
+.react-maitri{
+    background-color: #0011a8;
+}
+/*  bairagya  react*/
+.react-bairagya{
+    background-color: #ffe100;
+}
+/* virya react */
+.react-virya{
+    background-color: #ed131e;
+}
+/*  dana react */
+.react-dana{
+    border: 1px solid #f0f2f5;
+    background-color: #ffffff;
+}
+/*  kshanti react */
+.react-kshanti{
+    background-color: #ff9900;
+}
