@@ -6,9 +6,7 @@ import App from './App';
 import { GlobalContextProvider } from './contexts/GlobalContext';
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <GlobalContextProvider>
-      <RouterProvider router={App} />
-    </GlobalContextProvider>
-  </StrictMode>
+  <GlobalContextProvider>
+    <RouterProvider router={App} />
+  </GlobalContextProvider>
 )

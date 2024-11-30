@@ -2,7 +2,7 @@ import '../../assets/css/bodhidhara/newsBox.css';
 import Image from '../globals/Image';
 import NewsPhoto from './NewsPhoto.jsx';
 import NewsVideo from "./NewsVideo.jsx";
-import time from "../../utilities/time.js"
+import time from "../../utilities/time.js";
 import { useEffect, useState } from 'react';
 import VideoFrame from './VideoFrame.jsx';
 import Reaction from './Reaction.jsx';
@@ -12,7 +12,7 @@ import View from './View.jsx';
 import Cookies from 'js-cookie';
 import { authApi, api } from '../../utilities/api.js';
 
-const NewsBox = ({ news }) => {
+const NewsBox = ({ news,commentDetails=null }) => {
     const [activeMedia, setActiveMedia] = useState(null)
     const [state, setState] = useState({})
 
@@ -25,7 +25,7 @@ const NewsBox = ({ news }) => {
             setActiveMedia(null)
         }
     }, []);
-
+    console.log("news", news)
     /* ---------- NEWS VIEW COUNT START ---------- */
     const handleNewsViewCount = async (id) => {
         let token = Cookies.get('authToken')
@@ -67,7 +67,7 @@ const NewsBox = ({ news }) => {
                 </div>
                 <div className="newsBoxBody">
                     <div className="newsAuthInfo">
-                        <h1>জাদর এম্বা দুঃসময় চলের, রাজপথ চেলেহ ফাঁকা.</h1>
+                        <h1>বৌদ্ধদের ধর্মীয় পতাকা ছয়টি রং কেন ? এই ছয় রং কিসের প্রতীক ?</h1>
                         <h6><i className="fa-solid fa-table-columns"></i> Sammobaadi</h6>
                         <h6><i className="fa-regular fa-clock"></i> {time(news.created_at)} </h6>
                     </div>
@@ -112,21 +112,11 @@ const NewsBox = ({ news }) => {
                     <hr />
                     <div className="d-flex justify-content-between align-items-center">
                         <Reaction />
-                        <Comment />
-                        <BookMark />
+                        <Comment single_news={news}/>
+                        <BookMark news={news}/>
                         <View news={news}/>
                     </div>
-                    {/* <div >
-                        <div className="bookmark">
-                            <i className="fa-regular fa-bookmark"></i>
-                        </div>
-                        <div className="react">
-                            <i className="fa-regular fa-heart"></i>
-                        </div>
-                        <div className="comment">
-                            <i className="fa-regular fa-comment"></i>
-                        </div>
-                    </div> */}
+                    {commentDetails && commentDetails()}
                 </div>
             </div>
         </>

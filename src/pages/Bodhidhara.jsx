@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import NewsBox from "../components/bodhidhara/NewsBox";
 import NewsInputBox from "../components/bodhidhara/NewsInputBox";
+import { backend_link } from "../utilities/link";
 
 const Bodhidhara = () => {
   const [news, setNews] = useState([]);
-  
   useEffect(() => {
     const getNews = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/bodhidhara/news/');
+        const response = await fetch(`${backend_link}/bodhidhara/news/`);
         const data = await response.json();
         setNews(data);
       } catch (error) {

@@ -6,7 +6,7 @@ const View = ({news}) => {
             <div className="d-flex align-items-center flex-column justify-content-center">
                 <h6 className='text-center'>{news.views.length}</h6>
                 <div className="d-flex align-items-center justify-content-between gap-2 shadow-sm p-2 rounded">
-                    <i class="far fa-eye"></i>
+                    <i className="far fa-eye"></i>
                     <span>View</span>
                 </div>
             </div>

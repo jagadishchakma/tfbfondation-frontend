@@ -3,6 +3,7 @@ import { createContext, useEffect, useState } from "react";
 const BodhidharaContext = createContext();
 
 const BodhidharaContextProvider = ({children}) => {
+    const [news, setNews] = useState({});
     const [activeTab, setActiveTab] = useState('');
     const [newsWriting, setNewsWriting] = useState(false);
     useEffect(()=>{
@@ -13,7 +14,9 @@ const BodhidharaContextProvider = ({children}) => {
         activeTab,
         setActiveTab,
         newsWriting,
-        setNewsWriting
+        setNewsWriting,
+        news,
+        setNews
     }
     return (
         <BodhidharaContext.Provider value={stateObj}>

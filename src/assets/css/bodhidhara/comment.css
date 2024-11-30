@@ -1,0 +1,30 @@
+.news-comment{
+    margin-top: 15px !important;
+}
+.news-comment .commenter-img img{
+    border-radius: 50%;
+}
+.news-comment .commenter-info *{
+    margin: 0;
+}
+.news-comment .commenter-info .commenter-name{
+    font-size: 13px;
+}
+.news-comment .commenter-info .comment-time{
+    font-size: 10px;
+}
+.news-comment .comment-text{
+    font-size: 13px;
+    padding: 5px 0;
+}
+.news-comment .comment-reply{
+    font-size: 10px;
+    margin-bottom: 10px;
+}
+
+.add-comment .editable-area{
+    border-bottom: 1px solid gray;
+    min-height: 10px;
+    width: 100%;
+    padding: 10px;
+}

@@ -5,6 +5,7 @@ import BodhidharaToMenu from '../bodhidhara/BodhidharaToMenu';
 
 
 const BodhidharaLayout = () => {
+
     return (
         <BodhidharaContextProvider>
             <BodhidharaToMenu navlink={topNavMenu}/>
