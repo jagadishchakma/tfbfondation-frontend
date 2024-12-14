@@ -12,7 +12,7 @@ import View from './View.jsx';
 import Cookies from 'js-cookie';
 import { authApi, api } from '../../utilities/api.js';
 
-const NewsBox = ({ news,commentDetails=null }) => {
+const NewsBox = ({ news,commentDetails=null}) => {
     const [activeMedia, setActiveMedia] = useState(null)
     const [state, setState] = useState({})
 
@@ -25,7 +25,7 @@ const NewsBox = ({ news,commentDetails=null }) => {
             setActiveMedia(null)
         }
     }, []);
-    console.log("news", news)
+    
     /* ---------- NEWS VIEW COUNT START ---------- */
     const handleNewsViewCount = async (id) => {
         let token = Cookies.get('authToken')
@@ -52,9 +52,9 @@ const NewsBox = ({ news,commentDetails=null }) => {
             <div className="newsBox">
                 <div className="newsBoxheader">
                     <div className="d-flex justify-content-between">
-                        <div className="d-flex align-items-center gap-3">
+                        <div className="flex items-center gap-2">
                             <div className="newsAuthProfile">
-                                <Image src="https://media.licdn.com/dms/image/D5603AQFTu31FGC_8iA/profile-displayphoto-shrink_200_200/0/1694340966577?e=2147483647&v=beta&t=IvxBu2QjYwPjq7G-fNxyOcnkA213AgwTzXVxLtHn8oE" alt="user" width="50" height="50" />
+                                <Image src="https://images.prothomalo.com/prothomalo-bangla%2F2024-03%2F3837b135-5996-4665-b731-b00d97d27b14%2F1e47d8a6_6c4f_4166_a839_f0942a4bd1e1.jpg?rect=0%2C0%2C1280%2C853&auto=format%2Ccompress&fmt=webp&format=webp&w=640&dpr=1.3" alt="user" width="50" height="50" />
                             </div>
                             <div>
                                 <h5>Jagadish Chakma</h5>
@@ -75,7 +75,7 @@ const NewsBox = ({ news,commentDetails=null }) => {
                         <p>সোশাল মিডিয়ায় আমরা উস্কানিমূলক বক্তব্য পরিহার করি। সংশোধন হই, সহনশীল হই।ব্যক্তিকে আক্রমণ নয় সমস্যাকে আক্রমণ করি। সমাধানের পথ খুঁজি , সংঘাত বন্ধ করি। পৃথিবীতে আমরা কেউ চিরস্থায়ী নয়। নিজে ভালো থাকি, অন্যকেও ভালো রাখি।কারন দিন শেষে আমরা সবাই মানুষ, একই দেশের নাগরিক।।
                         </p>
                     </div>
-                    <div className="newsMediaDisplay" style={{ height: activeMedia && activeMedia.type == 'video' ? '300px' : '400px' }} onClick={() => handleNewsViewCount(news.id)}>
+                    <div className="newsMediaDisplay" style={{ minHeight: activeMedia && activeMedia.type == 'video' ? '300px' : '400px' }} onClick={() => handleNewsViewCount(news.id)}>
                         {
                             activeMedia && activeMedia.type == "video" && <NewsVideo videoId={activeMedia.id} height={300} width="100%" />
                         }
@@ -84,7 +84,7 @@ const NewsBox = ({ news,commentDetails=null }) => {
                         }
                     </div>
                     <div className="newsMediaList mt-2" onClick={() => handleNewsViewCount(news.id)}>
-                        <div className="d-flex justify-content-start gap-2">
+                        <div className="flex justify-start gap-2">
 
                             {
                                 news.fb_video_ids.map((item, index) => (
@@ -107,11 +107,10 @@ const NewsBox = ({ news,commentDetails=null }) => {
                         </div>
                     </div>
                 </div>
-
-                <div className="newsBoxFooter mt-5">
-                    <hr />
+                <hr className='my-4'/>
+                <div className="newsBoxFooter">
                     <div className="d-flex justify-content-between align-items-center">
-                        <Reaction />
+                        <Reaction news={news}/>
                         <Comment single_news={news}/>
                         <BookMark news={news}/>
                         <View news={news}/>

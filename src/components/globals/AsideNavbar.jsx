@@ -63,29 +63,19 @@ const AsideNavbar = () => {
                                 <span>Member</span>
                             </Link>
                         </li>
-                        <li>
+                       
+                        {/* <li>
                             <Link
-                                to="/" style={{ color: theme.txtColor }}>
-                                <Image src={aggriculture} alt="TFB" width={30} height={30} />
-                                <span>Agriculture</span>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link
-                                to="/" style={{ color: theme.txtColor }}>
-                                <Image src={culture} alt="TFB" width={30} height={30} />
-                                <span>Buddhist Culture</span>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link
-                                to="/banabhante" style={{ color: theme.txtColor }}>
+                                to="/banabhante"
+                                className={pathname == 'banabhante' ? 'active' : ''}
+                                style={{ color: theme.txtColor }}
+                            >
                                 <Image src={banabhante} alt="TFB" width={30} height={30} />
                                 <span>Banabhante</span>
                             </Link>
-                        </li>
+                        </li> */}
                     </ul>
-                    <hr />
+                    <hr className="my-4"/>
                     <ul className="tfb-link">
                         <li><Link to="/" style={{ color: theme.txtColor }}>About</Link></li>
                         <li><Link to="/" style={{ color: theme.txtColor }}>Privacy</Link></li>

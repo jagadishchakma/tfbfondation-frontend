@@ -16,27 +16,16 @@ import ImageBorder from "./ImageBorder";
 const TopNavbar = () => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [data, setData] = useState(null);
+    const [length, setLength] = useState(null);
 
     useEffect(() => {
-        //   // Function to update the window Width
-        //   const handleResize = () => {
-        //     setWindowWidth(window.innerWidth);
-        //   };
-
-        //   // Add event listener on component mount
-        //   window.addEventListener('resize', handleResize);
-
-        // Set data based on window Width
         if (windowWidth < 400) {
-            setData(20);
+            setData(15);
+            setLength(24);
         } else {
             setData(30);
+            setLength(30)
         }
-
-        //   // Cleanup event listener on component unmount
-        //   return () => {
-        //     window.removeEventListener('resize', handleResize);
-        //   };
     }, [windowWidth]);
 
     const { theme, setOpen, user, setState } = useContext(GlobalContext);
@@ -52,7 +41,7 @@ const TopNavbar = () => {
             return <TopProfile />
         } else {
             return (
-                <div onClick={() => setState((prevState)=>({...prevState, signupModal: true}))}><Image src={plus_user} alt="user" width={30} height={30} /></div>
+                <div onClick={() => setState((prevState)=>({...prevState, signupModal: true}))}><Image src={plus_user} alt="user" width={length} height={length} /></div>
             )
         }
     }
@@ -64,9 +53,9 @@ const TopNavbar = () => {
                 <nav className="nav-container">
                     <div className="container-fluid">
                         <div className="d-flex flex-row justify-content-between align-items-center">
-                            <div className="d-flex align-items-center navbar-brand">
-                                <div><button onClick={() => setOpen(true)} style={{ border: 'none', backgroundColor: theme.topBgColor }}><Image src={menu} alt="TFB" width={data} height={data} /></button></div>
-                                <a href="" className="brand-logo"><Image src={tfb_logo} alt="TFB" width={data} height={data} /></a>
+                            <div className="flex items-center navbar-brand gap-3 sm:ml-1">
+                                <div><button onClick={() => setOpen(true)} style={{ border: 'none', backgroundColor: theme.topBgColor }}><Image src={menu} alt="TFB" width={length} height={length} /></button></div>
+                                <a href="" className="brand-logo"><Image src={tfb_logo} alt="TFB" width={length} height={length} /></a>
                             </div>
                             <ul className="d-flex flx-row justify-content-between align-items-center trisharan gap-5" id="trisharan">
                                 <li><ImageBorder width={data} height={data}><Image src={buddha} alt="TFB" width={data} height={data} /></ImageBorder></li>

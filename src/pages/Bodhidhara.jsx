@@ -5,6 +5,7 @@ import { backend_link } from "../utilities/link";
 
 const Bodhidhara = () => {
   const [news, setNews] = useState([]);
+  
   useEffect(() => {
     const getNews = async () => {
       try {
@@ -18,7 +19,6 @@ const Bodhidhara = () => {
     getNews();
   }, [])
 
-  console.log(news);
   return (
     <>
       <NewsInputBox />

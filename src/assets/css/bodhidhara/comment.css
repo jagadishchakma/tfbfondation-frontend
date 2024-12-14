@@ -28,3 +28,11 @@
     width: 100%;
     padding: 10px;
 }
+.login-warn{
+    color: rgb(134, 133, 133);
+    font-style: italic;
+}
+.login-warn span{
+    color: #1975d1;
+    font-weight: bold;
+}

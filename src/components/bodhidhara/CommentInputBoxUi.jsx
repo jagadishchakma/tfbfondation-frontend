@@ -1,8 +1,9 @@
-import { useRef, useState } from "react"
+import { useContext, useRef, useState } from "react"
 import { Button, CircularProgress } from '@mui/material';
 import Image from "../globals/Image";
 import { authApi } from "../../utilities/api";
 import { useParams } from "react-router-dom";
+import { GlobalContext } from "../../contexts/GlobalContext";
 
 /* ---------- comment input box ui start ---------- */
 const CommentInputBoxUi = ({ length, reply = false, setReply = null, padding = "0px 5px", commentId = false, reply1Id = false, updatter }) => {
@@ -15,6 +16,7 @@ const CommentInputBoxUi = ({ length, reply = false, setReply = null, padding = "
 
     //handle comment
     const textareaRef = useRef(null);
+    const {checkUser} = useContext(GlobalContext)
 
     // Function to adjust the height of the textarea
     const handleCommentChange = (event) => {
@@ -79,7 +81,7 @@ const CommentInputBoxUi = ({ length, reply = false, setReply = null, padding = "
         return (
             <>
                 <Button variant="contained" color='danger' size='small' onClick={hideShowCommentInput}>Cancel</Button>
-                <Button variant='contained' color='info' size='small' disabled={!(/\S/.test(comment))} onClick={handleCommentSubmit}>Submit</Button>
+                <Button variant='contained' color='info' size='small' disabled={!(/\S/.test(comment))} onClick={()=>checkUser(handleCommentSubmit)}>Submit</Button>
             </>
         )
     }
@@ -89,7 +91,7 @@ const CommentInputBoxUi = ({ length, reply = false, setReply = null, padding = "
         <div className="add-comment mb-2">
             <div className="d-flex gap-2">
                 <div className="commenter">
-                    <Image src="https://media.licdn.com/dms/image/D5603AQFTu31FGC_8iA/profile-displayphoto-shrink_200_200/0/1694340966577?e=2147483647&v=beta&t=IvxBu2QjYwPjq7G-fNxyOcnkA213AgwTzXVxLtHn8oE" alt="user" width={length} height={length} />
+                    <Image src="https://images.prothomalo.com/prothomalo-bangla%2F2024-03%2F3837b135-5996-4665-b731-b00d97d27b14%2F1e47d8a6_6c4f_4166_a839_f0942a4bd1e1.jpg?rect=0%2C0%2C1280%2C853&auto=format%2Ccompress&fmt=webp&format=webp&w=640&dpr=1.3" alt="user" width={length} height={length} />
                 </div>
                 <div className="w-100 comment-box">
                     <div>

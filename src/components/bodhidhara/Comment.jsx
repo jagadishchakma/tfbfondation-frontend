@@ -14,7 +14,7 @@ const Comment = ({ single_news }) => {
         <div>
             <div className="d-flex align-items-center flex-column justify-content-center">
                 <h6 className='text-center'>1k</h6>
-                <div className="d-flex align-items-center justify-content-between gap-2 shadow-sm p-2 rounded" onClick={goToHome}>
+                <div className="d-flex pointer align-items-center justify-content-between gap-2 shadow-sm p-2 rounded" onClick={goToHome}>
                     <i className="far fa-comment"></i>
                     <span>Comment</span>
                 </div>

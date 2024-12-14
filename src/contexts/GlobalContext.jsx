@@ -13,12 +13,15 @@ const GlobalContextProvider = ({ children }) => {
   const [open, setOpen] = useState(false); //used for aside toggler in mobile
   const [state, setState] = useState({
     reload: 0,
-    signupModal: false
+    signupModal: false,
+    signUpLogin: 'login',
   })
+
 
 
   /*---------- load initially authenticate users if have start ------------*/
   useEffect(() => {
+    console.log("Hello");
     const getUser = async () => {
       const userId = Cookies.get('userId');
       const token = Cookies.get('authToken');
@@ -103,11 +106,20 @@ const GlobalContextProvider = ({ children }) => {
   }
   /*----------- user logout end ----------*/
 
+  /* ---------- check user start ---------- */
+  const checkUser = (callBack)=>{
+    if(Object.keys(user).length < 1){
+      setState((prevState)=>({...prevState, signUpLogin:'login', signupModal: true}))
+    }else{
+      callBack()
+    }
+  }
+  /* ---------- check user end ---------- */
 
 
   //component return function
   return (
-    <GlobalContext.Provider value={{ theme, setTheme, open, setOpen, login, logout, user, state, setState}}>
+    <GlobalContext.Provider value={{ theme, setTheme, open, setOpen, login, logout, user, state, setState, checkUser}}>
       {children}
     </GlobalContext.Provider>
   );

@@ -14,10 +14,8 @@ const LoadingImage = ({src, width, height, alt}) => {
       <img 
         src={src} 
         alt={alt}
-        style={{ display: isImageLoaded ? 'block' : 'none', margin: '0 auto' }} 
+        style={{ display: isImageLoaded ? 'block' : 'none', margin: '0 auto', width,height }} 
         onLoad={() => setIsImageLoaded(true)} 
-        width={width}
-        height={height}
       />
     </div>
   );

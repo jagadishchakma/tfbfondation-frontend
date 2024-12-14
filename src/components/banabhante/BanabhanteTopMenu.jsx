@@ -2,14 +2,17 @@ import {useLocation } from 'react-router-dom';
 import '../../assets/css/global/topMenu.css';
 import { useRef, useEffect, useContext } from 'react';
 import { GlobalContext } from '../../contexts/GlobalContext';
-import { BodhidharaContext } from '../../contexts/BodhidharaContext';
+import { BanabhanteContext } from '../../contexts/BanabhanteContext';
 
-const BodhidharaToMenu = ({ navlink }) => {
+const BanabhanteTopMenu = ({ navlink }) => {
 
     const tabListRef = useRef(null);
     const leftArrowRef = useRef(null);
     const rightArrowRef = useRef(null);
 
+        
+    const {theme} = useContext(GlobalContext);
+    const {activeTab, setActiveTab} = useContext(BanabhanteContext);
 
     const handleScroll = () => {
         const tabList = tabListRef.current;
@@ -71,8 +74,6 @@ const BodhidharaToMenu = ({ navlink }) => {
         };
     }, []);
 
-    const {theme} = useContext(GlobalContext);
-    const {activeTab, setActiveTab} = useContext(BodhidharaContext);
     return (
         <nav style={{backgroundColor: theme.compoBgColor}}>
             <div className="tab-container sticky-top">
@@ -113,4 +114,4 @@ const BodhidharaToMenu = ({ navlink }) => {
     );
 };
 
-export default BodhidharaToMenu;
+export default BanabhanteTopMenu;

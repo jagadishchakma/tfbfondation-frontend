@@ -8,7 +8,7 @@ import { api } from '../../utilities/api';
 import { GlobalContext } from '../../contexts/GlobalContext';
 
 
-function SignUp({ setSignUpLogin, setUserCredential }) {
+function SignUp({setUserCredential }) {
     const [user, setUser] = useState({});
     const [error, setError] = useState({});
     const [showPassword, setShowPassword] = useState(false);
@@ -342,14 +342,14 @@ function SignUp({ setSignUpLogin, setUserCredential }) {
     /*----------- HANDLE FORM SUBMISSION END -----------*/
 
     // context data load
-    const { setState: close } = useContext(GlobalContext)
+    const { setState:globalState } = useContext(GlobalContext)
 
     return (
         <>
             <Modal.Header className='d-flex justify-content-between align-items-start'>
                 <Modal.Title>Create Account</Modal.Title>
                 <div className="verification-close-btn">
-                    <i className="fas fa-times" onClick={() => close((prevState)=>({...prevState, signupModal:false}))}></i>
+                    <i className="fas fa-times" onClick={() => globalState((prevState)=>({...prevState, signupModal:false}))}></i>
                 </div>
             </Modal.Header>
             <Modal.Body>
@@ -585,7 +585,7 @@ function SignUp({ setSignUpLogin, setUserCredential }) {
                 <Button style={state.error ? { border: '1px solid red' } : { border: 'none' }} variant="contained" color="success" onClick={handlFormSubmission} disabled={state.loading ? true : false} fullWidth>
                     {state.loading ? <CircularProgress color="secondary" size={25} /> : "Submit"}
                 </Button>
-                <span className='d-block w-100 text-center'> Already  have an account? <span className='signup-login' onClick={() => setSignUpLogin('login')}>Login</span></span>
+                <span className='d-block w-100 text-center'> Already  have an account? <span className='signup-login' onClick={() => globalState((prevState)=>({...prevState, signUpLogin:'login'}))}>Login</span></span>
 
             </Modal.Footer>
         </>

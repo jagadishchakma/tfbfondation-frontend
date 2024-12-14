@@ -19,7 +19,7 @@ const TopProfile = () => {
             onMouseUp={() => setState((prevState) => ({ ...prevState, profilePress: 'not-change' }))}
             onClick={() => setState((prevState) => ({ ...prevState, menu: !prevState.menu }))}
         >
-            <Image src='https://media.licdn.com/dms/image/D5603AQFTu31FGC_8iA/profile-displayphoto-shrink_200_200/0/1694340966577?e=2147483647&v=beta&t=IvxBu2QjYwPjq7G-fNxyOcnkA213AgwTzXVxLtHn8oE' width='30' height='30' alt={user.username} />
+            <Image src='https://images.prothomalo.com/prothomalo-bangla%2F2024-03%2F3837b135-5996-4665-b731-b00d97d27b14%2F1e47d8a6_6c4f_4166_a839_f0942a4bd1e1.jpg?rect=0%2C0%2C1280%2C853&auto=format%2Ccompress&fmt=webp&format=webp&w=640&dpr=1.3' width='30' height='30' alt={user.username} />
             <div className='top-profile-toggler'><i className="fas fa-chevron-down"></i></div>
             <div id={state.menu ? 'show' : 'hide'}>
                 <div className="top-profile-menu shadow">

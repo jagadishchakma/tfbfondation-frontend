@@ -16,7 +16,7 @@ const Image = ({src, width, height, alt}) => {
       <img 
         src={src} 
         alt={alt}
-        style={{ display: isImageLoaded ? 'block' : 'none' }} 
+        style={{ display: isImageLoaded ? 'block' : 'none', width: `${width}px`, height: `${height}px` }} 
         onLoad={() => setIsImageLoaded(true)}
         width={width}
         height={height}

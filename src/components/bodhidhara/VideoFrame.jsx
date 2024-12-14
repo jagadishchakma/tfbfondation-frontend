@@ -31,7 +31,7 @@ const VideoFrame = ({videoId,height,width}) => {
   return (
     <div>
       {videoData.picture && (
-        <img src={videoData.picture} width={width} height={height} />
+        <img src={videoData.picture} style={{width:`${width}`, height:`${height}`}}/>
       )}
     </div>
   );

@@ -1,14 +1,14 @@
 import { Outlet } from 'react-router-dom';
 import topNavMenu from '../../data/bodhidara/bodhidhara_link';
 import { BodhidharaContextProvider } from '../../contexts/BodhidharaContext';
-import BodhidharaToMenu from '../bodhidhara/BodhidharaToMenu';
+import BodhidharaTopMenu from '../bodhidhara/BodhidharaTopMenu';
 
 
 const BodhidharaLayout = () => {
 
     return (
         <BodhidharaContextProvider>
-            <BodhidharaToMenu navlink={topNavMenu}/>
+            <BodhidharaTopMenu navlink={topNavMenu}/>
             <Outlet/>
         </BodhidharaContextProvider>
     );

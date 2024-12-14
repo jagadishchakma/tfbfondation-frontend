@@ -4,11 +4,12 @@
     right: 0;
     bottom: 0;
     height: 70px;
-    background-color: #1976D2;
-    padding-top: 7px;
+    background-color: #f6f6f6;
+    padding-top: 7px 0px;
     display: none;
+    z-index: 100;
 }
-.bottom-navbar .btm-nav-home{
+/* .bottom-navbar .btm-nav-home{
     display: inline-flex;
     -webkit-box-align: center;
     align-items: center;
@@ -46,7 +47,7 @@
     border-radius: 50%;
     padding: 0px;
     margin: 0px auto;
-}
+} */
 
 .bottom-navbar .btm-nav{
     display: inline-flex;

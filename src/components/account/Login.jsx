@@ -2,13 +2,13 @@ import { AccountCircle, Lock, Visibility, VisibilityOff } from '@mui/icons-mater
 import { Box, Button, TextField } from '@mui/material';
 import React, { useContext, useState } from 'react';
 import { Modal } from 'react-bootstrap';
-import { GlobalContext } from '../../contexts/GlobalContext';
+import { GlobalContext, GlobalContextProvider } from '../../contexts/GlobalContext';
 
-const Login = ({ setSignUpLogin }) => {
+const Login = () => {
     const [user, setUser] = useState({});
     const [error, setError] = useState({});
     const [showPassword, setShowPassword] = useState(false);
-    const {setState:close, login} = useContext(GlobalContext);
+    const {setState, login} = useContext(GlobalContext);
 
     //form data catch
     const handleFormData = (event) => {
@@ -56,7 +56,7 @@ const Login = ({ setSignUpLogin }) => {
             <Modal.Header className='d-flex justify-content-between align-items-start'>
                 <Modal.Title>Login</Modal.Title>
                 <div className="verification-close-btn">
-                    <i className="fas fa-times" onClick={() => close((prevState)=>({...prevState, signupModal:false}))}></i>
+                    <i className="fas fa-times" onClick={() => setState((prevState)=>({...prevState, signupModal:false}))}></i>
                 </div>
             </Modal.Header>
             <Modal.Body>
@@ -98,7 +98,7 @@ const Login = ({ setSignUpLogin }) => {
                 <Button variant="contained" color="success" onClick={handleLogin} fullWidth>
                     Submit
                 </Button>
-                <span className='d-block w-100 text-center'>Not  have an account? <span className="signup-login" onClick={() => setSignUpLogin('signup')}>Sign Up</span></span>
+                <span className='d-block w-100 text-center'>Not  have an account? <span className="signup-login" onClick={() => setState((prevState)=>({...prevState, signUpLogin:'signup'}))}>Sign Up</span></span>
             </Modal.Footer>
         </>
     );

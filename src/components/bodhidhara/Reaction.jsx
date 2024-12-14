@@ -1,66 +1,34 @@
+import { useContext, useEffect, useState } from 'react';
 import '../../assets/css/bodhidhara/reaction.css';
+import { authApi } from '../../utilities/api';
+import { GlobalContext } from '../../contexts/GlobalContext';
 
+const Reaction = ({news}) => {
+    const [state, setState] = useState({
+        reaction: false,
+    })
+    const {user, checkUser} = useContext(GlobalContext)
+    
+    useEffect(()=>{
+        if(Object.keys(user).length > 0 && news.reacts.includes(user.id)){
+            setState((prevState)=>({...prevState, reaction: true}))
+        }else{
+            setState((prevState)=>({...prevState, reaction: false}))
+        }
+    },[user])
 
-const reactions = [
-    {
-        id: 1,
-        name: "Love",
-        color: "#0011a8",
-        bgColor: "#0011a8",
-    },
-    {
-        id: 2,
-        name: "Diligence",
-        color: "#ffe100",
-        bgColor: "#ffe100",
-    },
-    {
-        id: 3,
-        name: "Power",
-        color: "#ed131e",
-        bgColor: "#ed131e",
-    },
-    {
-        id: 4,
-        name: "Generous",
-        color: "#ffffff",
-        bgColor: "#ffffff",
-    }, 
-    {
-        id: 5,
-        name: "Forgive",
-        color: "#ff9900",
-        bgColor: "#ff9900",
-    }
-]
-const Reaction = () => {
-    const fiveReaction = () => {
-        return (
-            <div className="d-flex align-items center gap-2">
-                <div className="react-maitri bodhi-react">
-
-                </div>
-                <div className="react-bairagya bodhi-react">
-
-                </div>
-                <div className="react-virya bodhi-react">
-
-                </div>
-                <div className="react-dana bodhi-react">
-
-                </div>
-                <div className="react-kshanti bodhi-react">
-
-                </div>
-            </div>
-        )
+    const handelReact = async () => {
+        await authApi().put('/bodhidhara/news/love/react/', {
+            news_id: news.id
+        })
+        setState((prevState)=>({...prevState, reaction: !prevState.reaction}))
     }
     return (
         <div>
             <div className="d-flex align-items-center flex-column justify-content-center">
                 <h6 className='text-center'>23k</h6>
-                <div className="d-flex align-items-center justify-content-between gap-2 shadow-sm p-2 rounded">
-                    <div className="react-maitri bodhi-react"></div>
+                <div className={`d-flex ${state.reaction?'text-red-500':''} cursor-pointer align-items-center justify-content-between gap-2 shadow-sm p-2 rounded`} onClick={()=>checkUser(handelReact)}>
+                    <span><i className="fas fa-heart"></i></span>
                     <span>Love</span>
                 </div>
             </div>

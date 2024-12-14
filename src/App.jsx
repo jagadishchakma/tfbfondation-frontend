@@ -4,6 +4,8 @@ import Home from "./pages/Home";
 import tfb_routes from "./routes/tfb_routes.jsx";
 import bodhidhara_routes from "./routes/bodhidhara_routes";
 import NotFound from "./pages/NotFound.jsx";
+import banabhante_routes from "./routes/banabhante_routes.jsx";
+
 
 const router = createBrowserRouter([
   {
@@ -20,7 +22,8 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       ...bodhidhara_routes,
-      ...tfb_routes
+      ...tfb_routes,
+      ...banabhante_routes
     ]
   }
 ]);
